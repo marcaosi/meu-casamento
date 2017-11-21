@@ -335,7 +335,7 @@ img { width: auto; max-width: 100%; height: auto; margin: 0; padding: 0; border:
 /*--------------------------
     5.2 Navigations Regular
    ----------------------------*/
-.hero-section { background: url(../images/hero-img.jpg) no-repeat center; background-size: cover; padding-bottom: 210px; padding-top: 210px; }
+.hero-section { background: url(../images/banner.jpg) no-repeat center; background-size: cover; padding-bottom: 210px; padding-top: 210px; }
 .hero-section-caption { text-align: center; position: relative; }
 .hero-title { color: #fff; font-size: 80px; font-weight: 900; line-height: 45px; margin-bottom: 60px; text-transform: capitalize; }
 .hero-small-text { font-size: 24px; font-weight: 900; margin-bottom: 25px; text-transform: capitalize; color: #d278ac; }
