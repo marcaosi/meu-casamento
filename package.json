@@ -20,5 +20,11 @@
   "bugs": {
     "url": "https://github.com/marcaosi/meu-casamento/issues"
   },
-  "homepage": "https://github.com/marcaosi/meu-casamento#readme"
+  "homepage": "https://github.com/marcaosi/meu-casamento#readme",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "ejs": "^2.5.7",
+    "express": "^4.16.2",
+    "mongodb": "^3.0.2"
+  }
 }
