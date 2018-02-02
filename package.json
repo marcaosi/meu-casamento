@@ -1,0 +1,24 @@
+{
+  "name": "meu-casamento",
+  "version": "1.0.0",
+  "description": "Aplicação para lista de presentes para o site do meu casamento",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/marcaosi/meu-casamento.git"
+  },
+  "keywords": [
+    "meu-casamento",
+    "marcos",
+    "carol"
+  ],
+  "author": "Marcos Antonio dos Santos",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/marcaosi/meu-casamento/issues"
+  },
+  "homepage": "https://github.com/marcaosi/meu-casamento#readme"
+}
