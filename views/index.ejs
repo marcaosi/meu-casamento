@@ -310,52 +310,14 @@
                                         <%=gift.status%>
                                     </td>
                                     <td>
-                                        <%if(gift.status === 'pendente'){%>
-                                            <a href="#" onclick="return openFormMark('<%=gift._id%>')">Marcar</a>
+                                        <%if(gift.status === 'Disponível'){%>
+                                            <a href="/markGift/<%=gift._id%>">Marcar</a>
                                         <%}%>
                                     </td>
                                 </tr>
                             <%})%>
                         </tbody>
                     </table>
-                </div>
-            </div>
-
-            <script>
-                function openFormMark(id){
-                    alert(id)
-                    return false;
-                }
-            </script>
-    
-            <div class="row">
-                <div class="col-md-10 col-md-offset-1 col-sm-12 col-xs-12">
-                    <h4>Marcar presente</h4>
-                    <form action="" class="form-mark">
-                        <div class="row">
-                            <div class="col-xs-12 form-group">
-                                <input type="text" class="form-control" id="input-presente" placeholder="Presente"/>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-xs-12 form-group">
-                                <input type="text" class="form-control" name="name" placeholder="Nome Completo"/>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-xs-12 col-sm-6 form-group">
-                                <input type="text" class="form-control" name="email" placeholder="E-mail"/>
-                            </div>
-                            <div class="col-xs-12 col-sm-6 form-group">
-                                <input type="text" class="form-control" name="telefone" placeholder="telefone"/>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-xs-12 col-md-3 col-md-offset-9 text-right">
-                                <button type="submit" class="btn btn-block btn-lg btn-success">Salvar</button>
-                            </div>
-                        </div>
-                    </form>
                 </div>
             </div>
         </div>
