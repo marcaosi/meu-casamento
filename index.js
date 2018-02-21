@@ -7,12 +7,15 @@ const mongo = mongodb.MongoClient
 // const urlDb = 'mongodb://localhost:27017/'
 const urlDb = 'mongodb+srv://marcaosi:marcao1996@cluster0-bj0ai.mongodb.net/test'
 
+const admin = require('./admin')
+
 app.listen(3000, (err) => {
     console.log('Server running...')
 })
 
 app.use(express.static('public'))
 app.use(bodyParser.urlencoded({extended: true}))
+app.use('/admin', admin(mongo, urlDb))
 app.set('view engine', 'ejs')
 
 // app.use((req, res, next) => {
