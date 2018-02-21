@@ -43,6 +43,43 @@ app.post('/gift', (req, res) => {
     })
 })
 
+app.post('/markGift/:id', (req, res) => {
+    mongo.connect(urlDb, (err, db) => {
+        if(!err){
+            const dbo = db.db('meucasamento')
+            let id = new mongodb.ObjectID(req.params.id)
+            dbo.collection('gifts').find({_id:id}).toArray((err, result) => {
+                if(err){
+                    res.status(500).send('erro'+err)
+                }else{
+                    // console.log(result)
+                    let gift = result[0]
+                    gift.person = {}
+                    gift.person.name = req.body.name
+                    gift.person.email = req.body.email
+                    gift.person.phone = req.body.phone
+                    gift.status = 'Marcado'
+                    if(gift){
+                        dbo.collection('gifts').updateOne({_id:id}, {$set:gift}).then(result => {
+                            console.log('presente marcado com sucesso')
+                            res.redirect('/')
+                        }).catch(err => {
+                            console.log(err)
+                            res.redirect('/')
+                        })
+
+                    }else{
+                        res.redirect('/')
+                    }
+                    
+                }
+            })
+        }else{
+            console.log("Impossível conectar no banco de dados => \n" + err)
+        }
+    })
+})
+
 app.get('/markGift/:id', (req, res) => {
     mongo.connect(urlDb, (err, db) => {
         if(!err){
