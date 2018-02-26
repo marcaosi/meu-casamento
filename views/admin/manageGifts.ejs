@@ -59,7 +59,10 @@
                                 <a href="/admin/gift/<%=element._id%>/delete">Apagar</a> 
                                 <a href="/admin/gift/<%=element._id%>">Editar</a> 
                                 <%if(element.status == "Marcado"){%>
-                                    <a href="#" class="link-dropdown" data-target="<%=element._id%>"><i id="dropdown-arrow" class="glyphicon glyphicon-menu-down pull-right"></i></a>
+                                    <a href="#" class="link-dropdown" data-target="<%=element._id%>">
+                                        <i id="dropdown-arrow-down" class="glyphicon glyphicon-menu-down pull-right"></i>
+                                        <i id="dropdown-arrow-up" class="glyphicon glyphicon-menu-up pull-right"></i>
+                                    </a>
                                 <%}%>
                             </td>
                         </tr>
@@ -89,24 +92,7 @@
     <script src="/js/jquery.easing.min.js"></script>
     <script src="/js/scrolling-nav.js"></script>
 
-    <script>
-        $(".element-dropdown").hide()
-        $(".link-dropdown").on('click', function(event) {
-            event.preventDefault()
-
-            let id = $(this).data("target")
-            let elementDropdown = $("#"+id)
-            let dropdownArrow = $("#dropdownArrow")
-
-            if(elementDropdown.data("visible") === 'hide'){
-                elementDropdown.fadeIn(500)
-                elementDropdown.data("visible", "show") 
-            }else{
-                elementDropdown.fadeOut(500)
-                elementDropdown.data("visible", "hide") 
-            }
-        })
-    </script>
+    <script src="/js/manageGifts.js"></script>
 </body>
 
 </html>
