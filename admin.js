@@ -3,6 +3,14 @@ const mongodb = require('mongodb')
 const app = express.Router()
 
 const init = (mongo, urlDb) => {
+    
+    app.use((req, res, next) => {
+        if(!req.session.user){
+            res.redirect('/login')
+        }else{
+            next()
+        }
+    })
 
     app.get('/gift', (req, res) => {
         res.render('formGift',{gift:{}})

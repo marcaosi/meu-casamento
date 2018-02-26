@@ -1,4 +1,5 @@
 const express = require('express')
+const session = require('express-session')
 const app = express()
 
 const bodyParser = require('body-parser')
@@ -15,17 +16,24 @@ app.listen(3000, (err) => {
 
 app.use(express.static('public'))
 app.use(bodyParser.urlencoded({extended: true}))
+
+app.use(session({
+    secret: 'fullstack-academy',
+    resave: true,
+    saveUninitialized: true
+}))
+
 app.use('/admin', admin(mongo, urlDb))
 app.set('view engine', 'ejs')
 
-// app.use((req, res, next) => {
-//     if(req.session.user){
-//         res.locals.user = req.session.user
-//     }else{
-//         res.locals.user = false
-//     }
-//     next()
-// })
+app.use((req, res, next) => {
+    if(req.session.user){
+        res.locals.user = req.session.user
+    }else{
+        res.locals.user = false
+    }
+    next()
+})
 
 app.post('/markGift/:id', (req, res) => {
     mongo.connect(urlDb, (err, db) => {
@@ -108,4 +116,21 @@ app.get('/', (req, res) => {
             console.log("Impossível conectar no banco de dados => \n" + err)
         }
     })
+})
+
+app.get('/login', (req, res) => {
+    res.render('login', {error:false})
+})
+
+app.post('/login', (req, res) => {
+    const user = req.body
+
+    if(user.login === 'administrador' && user.pwd === 'cm@2020'){
+        req.session.user = user
+        res.redirect('/admin')
+    }else{
+        res.render('login', {
+            error: 'Dados inválidos'
+        })
+    }
 })
