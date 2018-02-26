@@ -33,6 +33,11 @@
 
 <body>
     <div class="row">
+        <div class="col-md-10 col-md-offset-1 col-sm-12 col-xs-12 text-right">
+            <a href="/admin/gift" class="btn btn-large btn-primary">Adicionar</a>
+        </div>
+    </div>
+    <div class="row">
         <div class="col-md-10 col-md-offset-1 col-sm-12 col-xs-12">
             <table class="table">
                 <thead>
@@ -44,13 +49,16 @@
                     </tr>
                 </thead>
                 <tbody>
-                        <!-- <%=JSON.stringify(gifts)%> -->
+                    <!-- <%=JSON.stringify(gifts)%> -->
                     <%gifts.forEach(element => {%>
                         <tr>
                             <td><%=element.id%></td>
                             <td><%=element.name%></td>
                             <td><%=element.status%></td>
-                            <td>Ações</td>
+                            <td>
+                                <a href="/admin/gift/<%=element._id%>/delete">Apagar</a> 
+                                <a href="/admin/gift/<%=element._id%>">Editar</a> 
+                            </td>
                         </tr>
                     <%})%>
                 </tbody>

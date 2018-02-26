@@ -27,25 +27,6 @@ app.set('view engine', 'ejs')
 //     next()
 // })
 
-app.get('/gift', (req, res) => {
-    res.render('formGift')
-})
-
-app.post('/gift', (req, res) => {
-    let gift = req.body
-    gift.status = 'Disponível'
-
-    mongo.connect(urlDb, (err, db) => {
-        if(!err){
-            const dbo = db.db('meucasamento')
-            dbo.collection('gifts').insert(gift)
-            res.redirect('/')
-        }else{
-            console.log("Impossível conectar no banco de dados => \n" + err)
-        }
-    })
-})
-
 app.post('/markGift/:id', (req, res) => {
     mongo.connect(urlDb, (err, db) => {
         if(!err){

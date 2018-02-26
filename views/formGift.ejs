@@ -34,16 +34,17 @@
 <body>
     <div class="row">
         <div class="col-md-10 col-md-offset-1 col-sm-12 col-xs-12">
-            <h4>Novo presente</h4>
+            <h4><% if(gift){ %>Atualizar<%}else{%>Novo<%}%> presente</h4>
             <form action="" class="form-mark" method="post">
                 <div class="row">
                     <div class="col-xs-12 form-group">
-                        <input type="text" class="form-control" name="name" placeholder="Nome"/>
+                        <input type="hidden" name="id" value="<%=gift._id%>">
+                        <input type="text" class="form-control" name="name" placeholder="Nome" value="<%=gift.name%>"/>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-xs-12 form-group">
-                        <input type="text" class="form-control" name="link" placeholder="Link para loja"/>
+                        <input type="text" class="form-control" name="link" placeholder="Link para loja" value="<%=gift.link%>"/>
                     </div>
                 </div>
                 <div class="row">
