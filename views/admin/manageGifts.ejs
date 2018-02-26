@@ -52,14 +52,25 @@
                     <!-- <%=JSON.stringify(gifts)%> -->
                     <%gifts.forEach(element => {%>
                         <tr>
-                            <td><%=element.id%></td>
+                            <td></td>
                             <td><%=element.name%></td>
                             <td><%=element.status%></td>
                             <td>
                                 <a href="/admin/gift/<%=element._id%>/delete">Apagar</a> 
                                 <a href="/admin/gift/<%=element._id%>">Editar</a> 
+                                <%if(element.status == "Marcado"){%>
+                                    <a href="#" class="link-dropdown" data-target="<%=element._id%>"><i id="dropdown-arrow" class="glyphicon glyphicon-menu-down pull-right"></i></a>
+                                <%}%>
                             </td>
                         </tr>
+                        <%if(element.person){%>
+                            <tr class="element-dropdown" data-visible="hide" id="<%=element._id%>">
+                                <td></td>
+                                <td><%=element.person.name%></td>
+                                <td><%=element.person.email%></td>
+                                <td><%=element.person.phone%></td>
+                            </tr>
+                        <%}%>
                     <%})%>
                 </tbody>
             </table>
@@ -77,6 +88,25 @@
     <script type="text/javascript" src="/js/slider.js"></script>
     <script src="/js/jquery.easing.min.js"></script>
     <script src="/js/scrolling-nav.js"></script>
+
+    <script>
+        $(".element-dropdown").hide()
+        $(".link-dropdown").on('click', function(event) {
+            event.preventDefault()
+
+            let id = $(this).data("target")
+            let elementDropdown = $("#"+id)
+            let dropdownArrow = $("#dropdownArrow")
+
+            if(elementDropdown.data("visible") === 'hide'){
+                elementDropdown.fadeIn(500)
+                elementDropdown.data("visible", "show") 
+            }else{
+                elementDropdown.fadeOut(500)
+                elementDropdown.data("visible", "hide") 
+            }
+        })
+    </script>
 </body>
 
 </html>

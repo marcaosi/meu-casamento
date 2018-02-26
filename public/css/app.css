@@ -6,3 +6,7 @@
     color: black;
     border: 2px solid #ddd; 
 }
+
+tr.element-dropdown{
+    background-color: beige;
+}
