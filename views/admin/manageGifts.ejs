@@ -53,7 +53,7 @@
                     <%gifts.forEach(element => {%>
                         <tr>
                             <td></td>
-                            <td><%=element.name%></td>
+                            <td><a target="_blank" href="<%=element.link%>"><%=element.name%></a></td>
                             <td><%=element.status%></td>
                             <td>
                                 <a href="/admin/gift/<%=element._id%>/delete">Apagar</a> 
